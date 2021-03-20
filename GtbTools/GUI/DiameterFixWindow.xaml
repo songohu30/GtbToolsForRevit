@@ -1,0 +1,70 @@
+﻿<Window x:Class="GUI.DiameterFixWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        Background="LightGray"
+        WindowStartupLocation="CenterOwner"
+        Title="DiameterFixWindow" Height="470" Width="700">
+    <Grid Background="#FFEEEEEE" Margin="10">
+        <TabControl x:Name="MyTabControl" Background="#FFEEEEEE" SelectionChanged="MyTabControl_SelectionChanged">
+            <TabItem Header="D ist nicht gleich DN" TabIndex="0">
+                <Grid Background="#FFEEEEEE">
+                    <DataGrid x:Name="MainDataGrid" HorizontalAlignment="Left" 
+                          ItemsSource="{Binding OpeningModels, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0" Width="470"
+                          AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="70" Header="Opening ID" Binding="{Binding Path=OpeningId}"/>
+                            <DataGridTextColumn Width="70" Header="Opening D" Binding="{Binding Path=OpeningDiameter}"/>
+                            <DataGridTextColumn Width="70" Header="Cut Offset" Binding="{Binding Path=OpeningOffset}"/>
+                            <DataGridTextColumn Width="90" Header="Cut Element ID" Binding="{Binding Path=CutElementId}"/>
+                            <DataGridTextColumn Width="60" Header="Pipe DN" Binding="{Binding Path=PipeDiameter}"/>
+                            <DataGridTextColumn Width="70" Header="Pipe Slope" Binding="{Binding Path=PipeSlope}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Schnittelement nicht gefunden" TabIndex="1">
+                <Grid Background="#FFEEEEEE">
+                    <DataGrid x:Name="DataGridNotFound" HorizontalAlignment="Left" 
+                          ItemsSource="{Binding NotFoundModels, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0" Width="470"
+                          AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="70" Header="Opening ID" Binding="{Binding Path=OpeningId}"/>
+                            <DataGridTextColumn Width="70" Header="Opening D" Binding="{Binding Path=OpeningDiameter}"/>
+                            <DataGridTextColumn Width="70" Header="Cut Offset" Binding="{Binding Path=OpeningOffset}"/>
+                            <DataGridTextColumn Width="90" Header="Cut Element ID" Binding="{Binding Path=CutElementId}"/>
+                            <DataGridTextColumn Width="60" Header="Pipe DN" Binding="{Binding Path=PipeDiameter}"/>
+                            <DataGridTextColumn Width="70" Header="Pipe Slope" Binding="{Binding Path=PipeSlope}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Other ViewModels" TabIndex="2">
+                <Grid Background="#FFEEEEEE">
+                    <DataGrid x:Name="DataGridOther" HorizontalAlignment="Left" 
+                          ItemsSource="{Binding OtherModels, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0" Width="470"
+                          AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="70" Header="Opening ID" Binding="{Binding Path=OpeningId}"/>
+                            <DataGridTextColumn Width="70" Header="Opening D" Binding="{Binding Path=OpeningDiameter}"/>
+                            <DataGridTextColumn Width="70" Header="Cut Offset" Binding="{Binding Path=OpeningOffset}"/>
+                            <DataGridTextColumn Width="90" Header="Cut Element ID" Binding="{Binding Path=CutElementId}"/>
+                            <DataGridTextColumn Width="60" Header="Pipe DN" Binding="{Binding Path=PipeDiameter}"/>
+                            <DataGridTextColumn Width="70" Header="Pipe Slope" Binding="{Binding Path=PipeSlope}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <ComboBox x:Name="ComBoxLinks" ItemsSource="{Binding Links}" DisplayMemberPath="Name" HorizontalAlignment="Right" Margin="0,53,10,0" VerticalAlignment="Top" Width="169"/>
+        <Label Content="Cutting elements linked rvt:" HorizontalAlignment="Right" Margin="0,22,10,0" VerticalAlignment="Top" RenderTransformOrigin="-0.415,0.852" Width="169"/>
+        <Button Content="Search linked file" HorizontalAlignment="Right" Margin="0,80,10,0" VerticalAlignment="Top" Width="169" Click="Btn_Click_Search"/>
+        <Button Content="Remove from list" HorizontalAlignment="Right" Margin="0,63,10,60" VerticalAlignment="Bottom" Width="169" Click="Btn_Click_RemoveFromList"/>
+        <Button Content="Select in project" HorizontalAlignment="Right" Margin="0,63,10,35" VerticalAlignment="Bottom" Width="169" Click="Btn_Click_SelectItems"/>
+        <Button x:Name="BtnFixSelected" Content="Fix Selected" HorizontalAlignment="Right" Margin="0,63,10,10" VerticalAlignment="Bottom" Width="169" Click="Btn_Click_FixSelected"/>
+    </Grid>
+</Window>

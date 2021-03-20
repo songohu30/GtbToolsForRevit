@@ -1,0 +1,16 @@
+﻿<Window x:Class="GUI.CalculationSupportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="CalculationSupportWindow" Height="272.941" Width="300">
+    <Grid>
+        <Button Content="Find disconnected fittings" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="200" Click="BtnClick_FindDisconnectedFitting"/>
+        <Button Content="Connect disconnected" HorizontalAlignment="Center" Margin="0,45,0,0" VerticalAlignment="Top" Width="200" Click="BtnClick_ConnectDisconnected"/>
+        <Button Content="Fittings with reducers" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Width="200" Click="BtnClick_FittingWithReducers"/>
+        <Button Content="Extract entnahme armatur" HorizontalAlignment="Center" Margin="0,115,0,0" VerticalAlignment="Top" Width="200" Click="BtnClick_ExtractFixtures"/>
+        <Button Content="Select from clipboard" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" Width="200" Click="BtnClick_SelectFromClipboard"/>
+    </Grid>
+</Window>

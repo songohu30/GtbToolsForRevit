@@ -1,0 +1,32 @@
+﻿<Window x:Class="GUI.VentileFixWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="VentileFixWindow" Height="450" Width="500"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Background="Gray">
+    <Grid Background="White" Margin="5">
+        <DataGrid x:Name="MyDataGrid" 
+                  ItemsSource="{Binding VentileFix.VentileFixViewModels}" 
+                  Margin="10,81,10,10" AutoGenerateColumns="False"
+                  SelectionChanged="MyDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Header="Ventil ID" Binding="{Binding Path=ElementId}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Referenz Ebene" Binding="{Binding Path=ReferenceLevel}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Systemtyp" Binding="{Binding Path=SystemType}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Aktueller Typ" Binding="{Binding Path=CurrentType}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Neuer Typ" Binding="{Binding Path=NewType}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Alle Ventile ändern" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Click="Btn_Click_FixAll"/>
+        <Button Content="Ausgewählte ändern" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="120" Click="Btn_Click_FixSelected"/>
+        <Button Content="Kontext aktualisieren" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="140" Click="Btn_Click_Refresh"/>
+        <Button Content="Im Projekt zeigen" HorizontalAlignment="Right" Margin="0,35,10,0" VerticalAlignment="Top" Width="140" Click="Btn_Click_ShowInProject"/>
+
+
+    </Grid>
+</Window>

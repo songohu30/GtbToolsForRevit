@@ -1,0 +1,40 @@
+﻿<Window x:Class="GUI.CustomDirectionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Title="CustomDirectionsWindow" Height="450" Width="300" Background="Gray">
+    <Grid Margin="5" Background="#FFFBFBFB">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="cb1" ItemsSource="{Binding Options}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cb2" ItemsSource="{Binding Options}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,37,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cb3" ItemsSource="{Binding Options}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,64,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cb4" ItemsSource="{Binding Options}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,91,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cb5" ItemsSource="{Binding Options}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,118,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cb6" ItemsSource="{Binding Options}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,145,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cb7" ItemsSource="{Binding Options}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cb8" ItemsSource="{Binding Options}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,199,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cb9" ItemsSource="{Binding Options}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,226,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cb10" ItemsSource="{Binding Options}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,253,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="SAN Schmutzwasser:" HorizontalAlignment="Right" Margin="0,6,0,0" VerticalAlignment="Top"/>
+        <Label Content="SAN Ventilation:" HorizontalAlignment="Right" Margin="0,33,0,0" VerticalAlignment="Top"/>
+        <Label Content="SAN Regenwasser:" HorizontalAlignment="Right" Margin="0,60,0,0" VerticalAlignment="Top"/>
+        <Label Content="SAN Kaltwasser:" HorizontalAlignment="Right" Margin="0,87,0,0" VerticalAlignment="Top"/>
+        <Label Content="SAN Warmwasser:" HorizontalAlignment="Right" Margin="0,114,0,0" VerticalAlignment="Top"/>
+        <Label Content="SAN Zirkulation:" HorizontalAlignment="Right" Margin="0,141,0,0" VerticalAlignment="Top"/>
+        <Label Content="HZG Vorlauf:" HorizontalAlignment="Right" Margin="0,167,0,0" VerticalAlignment="Top"/>
+        <Label Content="HZG Rucklauf:" HorizontalAlignment="Right" Margin="0,195,0,0" VerticalAlignment="Top"/>
+        <Label Content="KAE Vorlauf:" HorizontalAlignment="Right" Margin="0,222,0,0" VerticalAlignment="Top"/>
+        <Label Content="KAE Rucklauf:" HorizontalAlignment="Right" Margin="0,249,141,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button Content="Apply" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,35" VerticalAlignment="Bottom" Width="121" Click="Btn_Click_Apply"/>
+        <Button Content="Cancel" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="121" Click="Btn_Clic_Cancel"/>
+    </Grid>
+</Window>

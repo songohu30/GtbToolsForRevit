@@ -1,0 +1,46 @@
+﻿<Window x:Class="GtbTools.GUI.ExcelDataImport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GtbTools.GUI"
+        mc:Ignorable="d"
+        Title="ExcelDataInsert" Height="462" Width="814"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown"
+        ResizeMode="NoResize">
+    <Grid x:Name="myGrid" Focusable="True">
+        <ListBox x:Name="CheckBoxList" ItemsSource="{Binding ExcelDataImporter.FileList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="445">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox x:Name="CheckboxTemplate" Content="{Binding FileName}" IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBox x:Name="TxtBoxSearch" HorizontalAlignment="Left" Height="23" Margin="626,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156"/>
+        <Button x:Name="BtnSearch" Content="Suchen .xlsx Dateien" HorizontalAlignment="Left" Margin="626,40,0,0" VerticalAlignment="Top" Width="157" Height="23" Click="BtnSearch_Click" IsEnabled="False"/>
+        <TextBox x:Name="TxtBoxCellColumn"  LostFocus="TxtBoxCellColumn_LostFocus" HorizontalAlignment="Left" Height="23" Margin="471,193,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="35"/>
+        <Label Content="Zelle Adresse (A1, C2...)" HorizontalAlignment="Left" Margin="649,190,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0"/>
+        <TextBox x:Name="TxtBoxSheetName" LostFocus="TxtBoxSheetName_LostFocus" HorizontalAlignment="Left" Height="23" Margin="471,221,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Tabelle Name" HorizontalAlignment="Left" Margin="596,218,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0" Width="93"/>
+        <TextBox x:Name="txtBoxFixedValue" HorizontalAlignment="Left" Height="23" Margin="569,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.025,0.348"/>
+        <Label Content="Fester Wert:" HorizontalAlignment="Left" Margin="490,277,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0"/>
+        <RadioButton x:Name="RadBtnFixedValue" Content="" HorizontalAlignment="Left" Margin="471,284,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RadBtnCombinedValue" Content="" HorizontalAlignment="Left" Margin="471,310,0,0" VerticalAlignment="Top"/>
+        <Label Content="Kombinierter Wert:" HorizontalAlignment="Left" Margin="490,304,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0"/>
+        <CheckBox x:Name="ChckBoxFolderLink" Content="Ordner Link  +" HorizontalAlignment="Left" Margin="598,310,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="ChckBoxFileName" Content="Datei Name" HorizontalAlignment="Left" Margin="700,310,0,0" VerticalAlignment="Top"/>
+        <Label Content="+ fester Wert" HorizontalAlignment="Left" Margin="579,330,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0"/>
+        <TextBox x:Name="TxtBoxFixedValuePlus" HorizontalAlignment="Left" Height="23" Margin="662,333,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Wo mochten Sie einen neuen Wert einfugen?" HorizontalAlignment="Left" Margin="467,162,0,0" VerticalAlignment="Top" Width="258"/>
+        <Label Content="Neuer Wert zum Einfugen:" HorizontalAlignment="Left" Margin="471,249,0,0" VerticalAlignment="Top"/>
+        <Label Content="A,B-Z" HorizontalAlignment="Left" Margin="507,190,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0"/>
+        <TextBox x:Name="TxtBoxCellRow" LostFocus="TxtBoxCellRow_LostFocus" HorizontalAlignment="Left" Height="23" Margin="555,193,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="41"/>
+        <Label Content="1,2-100" HorizontalAlignment="Left" Margin="596,190,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0" Width="53"/>
+        <Button x:Name="BtnProcess" IsEnabled="{Binding ProcessApproved, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Process" HorizontalAlignment="Left" Margin="708,389,0,0" VerticalAlignment="Top" Width="75" Click="BtnProcess_Click"/>
+        <Label x:Name="lblFunctionInactive" Foreground="Red" Content="Funktion ist nicht aktiviert" HorizontalAlignment="Left" Margin="475,363,0,0" VerticalAlignment="Top" Width="307"/>
+        <Button x:Name="BtnSelectAll" Content="Alles Wahlen" HorizontalAlignment="Left" Margin="467,10,0,0" VerticalAlignment="Top" Width="142" Height="23" Click="BtnSelectAll_Click" IsEnabled="false" />
+        <Button x:Name="BtnClearAll" Content="Alles Klaren" HorizontalAlignment="Left" Margin="467,40,0,0" VerticalAlignment="Top" Width="142" Height="23" Click="BtnClearAll_Click" IsEnabled="False"/>
+
+    </Grid>
+</Window>

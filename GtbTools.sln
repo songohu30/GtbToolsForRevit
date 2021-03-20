@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GtbTools", "GtbTools\GtbTools.csproj", "{7C6686D0-91F9-4807-B013-532F77086E60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug2018|x64 = Debug2018|x64
+		Debug2019|x64 = Debug2019|x64
+		Debug2020|x64 = Debug2020|x64
+		Debug2021|x64 = Debug2021|x64
+		Release2018|x64 = Release2018|x64
+		Release2019|x64 = Release2019|x64
+		Release2020|x64 = Release2020|x64
+		Release2021|x64 = Release2021|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Debug2018|x64.ActiveCfg = Debug2018|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Debug2018|x64.Build.0 = Debug2018|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Debug2019|x64.ActiveCfg = Debug2019|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Debug2019|x64.Build.0 = Debug2019|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Debug2020|x64.ActiveCfg = Debug2020|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Debug2020|x64.Build.0 = Debug2020|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Debug2021|x64.ActiveCfg = Debug2021|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Debug2021|x64.Build.0 = Debug2021|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Release2018|x64.ActiveCfg = Release2018|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Release2018|x64.Build.0 = Release2018|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Release2019|x64.ActiveCfg = Release2019|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Release2019|x64.Build.0 = Release2019|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Release2020|x64.ActiveCfg = Release2020|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Release2020|x64.Build.0 = Release2020|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Release2021|x64.ActiveCfg = Release2021|x64
+		{7C6686D0-91F9-4807-B013-532F77086E60}.Release2021|x64.Build.0 = Release2021|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2CE35B5E-39D6-4F1B-A1F3-C7D90219586B}
+	EndGlobalSection
+EndGlobal

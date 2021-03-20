@@ -1,0 +1,216 @@
+﻿<Window x:Class="GUI.DurchbruchMemoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Closed="Window_Closed"
+        Title="DurchbruchMemoryWindow" Height="500" Width="750">
+
+    <Grid x:Name="MainGrid">
+        <Grid.Background>
+            <SolidColorBrush Color="#FFEAEAEA"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="160"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="MyTabs" Background="#FFEAEAEA">
+            <TabItem Header="New Durchbruche" TabIndex="0">
+                <DataGrid x:Name="DataGridNew"
+                            HorizontalScrollBarVisibility="Auto"
+                            VerticalScrollBarVisibility="Auto"
+                            ItemsSource="{Binding NewDurchbruche, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                            AutoGenerateColumns="False"
+                            SelectionChanged="DataGridNew_SelectionChanged" 
+                            CellEditEnding="DataGridNew_CellEditEnding">
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+                        </Style>
+                    </DataGrid.CellStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn IsReadOnly="True" Header="ID" Binding="{Binding Path=ElementId}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Shape" Binding="{Binding Path=Shape}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Diameter" Binding="{Binding Path=Diameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="False" Header="Pipe Diameter" Binding="{Binding Path=PipeDiameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="False" Header="Cut Offset" Binding="{Binding Path=Offset, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Width" Binding="{Binding Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Height" Binding="{Binding Path=Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Depth" Binding="{Binding Path=Depth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTemplateColumn Header="Views">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Show" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Width="75" Click="BtnClick_NewDurchBruchViews"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn IsReadOnly="True" Header="Mark" Binding="{Binding Path=OpeningMark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="System Typ" Binding="{Binding Path=SystemType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Feuerklasse" Binding="{Binding Path=FireRating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Moved Durchbruche" TabIndex="1">
+                <DataGrid x:Name="DataGridMoved"
+                            HorizontalScrollBarVisibility="Auto"
+                            VerticalScrollBarVisibility="Auto"
+                            ItemsSource="{Binding MovedDurchbruche, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                            AutoGenerateColumns="False"
+                            SelectionChanged="DataGridMoved_SelectionChanged"
+                            CellEditEnding="DataGridMoved_CellEditEnding">
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+                        </Style>
+                    </DataGrid.CellStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn IsReadOnly="True" Header="ID" Binding="{Binding Path=ElementId}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Shape" Binding="{Binding Path=Shape}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Diameter" Binding="{Binding Path=Diameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="False" Header="Pipe Diameter" Binding="{Binding Path=PipeDiameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="False" Header="Cut Offset" Binding="{Binding Path=Offset, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Width" Binding="{Binding Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Height" Binding="{Binding Path=Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Depth" Binding="{Binding Path=Depth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTemplateColumn Header="Views">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Edit" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Width="75" Click="BtnClick_MovedDurchBruchViews"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn IsReadOnly="True" Header="Mark" Binding="{Binding Path=OpeningMark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="System Typ" Binding="{Binding Path=SystemType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Feuerklasse" Binding="{Binding Path=FireRating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Date Saved" Binding="{Binding Path=DateSaved}"/>
+                        <DataGridCheckBoxColumn Header="Old position marker" IsReadOnly="False">
+                            <DataGridCheckBoxColumn.CellStyle>
+                                <Style>
+                                    <EventSetter Event="CheckBox.Checked" Handler="OnChecked"/>
+                                    <EventSetter Event="CheckBox.Unchecked" Handler="OnUnchecked"/>
+                                    <Setter Property="CheckBox.HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="CheckBox.VerticalAlignment" Value="Center"/>
+                                    <Setter Property= "CheckBox.Background" Value="Transparent"/>
+                                </Style>
+                            </DataGridCheckBoxColumn.CellStyle>
+                        </DataGridCheckBoxColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Resized Durchbruche" TabIndex="2">
+                <DataGrid x:Name="DataGridResized"
+                            HorizontalScrollBarVisibility="Auto"
+                            VerticalScrollBarVisibility="Auto"
+                            ItemsSource="{Binding ResizedDurchbruche, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                            AutoGenerateColumns="False" 
+                            SelectionChanged="DataGridResized_SelectionChanged" 
+                            CellEditEnding="DataGridResized_CellEditEnding">
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+                        </Style>
+                    </DataGrid.CellStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn IsReadOnly="True" Header="ID" Binding="{Binding Path=ElementId}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Shape" Binding="{Binding Path=Shape}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Diameter" Binding="{Binding Path=Diameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="False" Header="Pipe Diameter" Binding="{Binding Path=PipeDiameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="False" Header="Cut Offset" Binding="{Binding Path=Offset, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Width" Binding="{Binding Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Height" Binding="{Binding Path=Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Depth" Binding="{Binding Path=Depth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTemplateColumn Header="Views">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Show" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Width="75" Click="BtnClick_ResizedDurchBruchViews"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn IsReadOnly="True" Header="Mark" Binding="{Binding Path=OpeningMark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="System Typ" Binding="{Binding Path=SystemType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Feuerklasse" Binding="{Binding Path=FireRating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Old DB Diameter" Binding="{Binding Path=OldDiameter}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Old Pipe Diameter" Binding="{Binding Path=OldPipeDiameter}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Old Cut Offset" Binding="{Binding Path=OldOffset}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Old DB Width" Binding="{Binding Path=OldWidth}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Old DB Height" Binding="{Binding Path=OldHeight}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Old DB Depth" Binding="{Binding Path=OldDepth}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Date Saved" Binding="{Binding Path=DateSaved}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Moved and Resized" TabIndex="3">
+                <DataGrid x:Name="DataGridMovedAndResized"
+                            HorizontalScrollBarVisibility="Auto"
+                            VerticalScrollBarVisibility="Auto"
+                            ItemsSource="{Binding MovedAndResizedDurchbruche}" 
+                            AutoGenerateColumns="False" 
+                            SelectionChanged="DataGridMovedAndResized_SelectionChanged"
+                            CellEditEnding="DataGridMovedAndResized_CellEditEnding">
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+                        </Style>
+                    </DataGrid.CellStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn IsReadOnly="True" Header="ID" Binding="{Binding Path=ElementId}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Shape" Binding="{Binding Path=Shape}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Diameter" Binding="{Binding Path=Diameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="False" Header="Pipe Diameter" Binding="{Binding Path=PipeDiameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="False" Header="Cut Offset" Binding="{Binding Path=Offset, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Width" Binding="{Binding Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Height" Binding="{Binding Path=Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="DB Depth" Binding="{Binding Path=Depth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTemplateColumn Header="Views">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Show" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Width="75" Click="BtnClick_MovedAndResized"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn IsReadOnly="True" Header="Mark" Binding="{Binding Path=OpeningMark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="System Typ" Binding="{Binding Path=SystemType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Feuerklasse" Binding="{Binding Path=FireRating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Old DB Diameter" Binding="{Binding Path=OldDiameter}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Old Pipe Diameter" Binding="{Binding Path=OldPipeDiameter}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Old Cut Offset" Binding="{Binding Path=OldOffset}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Old DB Width" Binding="{Binding Path=OldWidth}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Old DB Height" Binding="{Binding Path=OldHeight}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Old DB Depth" Binding="{Binding Path=OldDepth}"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Date Saved" Binding="{Binding Path=DateSaved}"/>
+                        <DataGridCheckBoxColumn Header="Old Position Marker">
+                            <DataGridCheckBoxColumn.CellStyle>
+                                <Style>
+                                    <EventSetter Event="CheckBox.Checked" Handler="OnChecked"/>
+                                    <EventSetter Event="CheckBox.Unchecked" Handler="OnUnchecked"/>
+                                    <Setter Property="CheckBox.HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="CheckBox.VerticalAlignment" Value="Center"/>
+                                    <Setter Property= "CheckBox.Background" Value="Transparent"/>
+                                </Style>
+                            </DataGridCheckBoxColumn.CellStyle>
+                        </DataGridCheckBoxColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        <StackPanel x:Name="RightStackPanel" Margin="5,22,5,5" Grid.Column="1" Focusable="True">
+            <Button Content="Clear Selection" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,5" VerticalAlignment="Top" Width="120" Click="Btn_Click_ClearAll" Visibility="Visible"/>
+            <Button Content="Save New" Grid.Column="1" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top" Width="120" Click="Btn_Click_SaveNew" Visibility="Visible"/>
+            <Button Content="Save All" Grid.Column="1" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top" Width="120" Click="Btn_Click_SaveAll" Visibility="Visible"/>
+            <Button Content="Save Selected" Grid.Column="1" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top" Width="120" Click="Btn_Click_SaveSelected" Visibility="Visible"/>
+            <Label x:Name="lblNew" Content="0 New Durchbruche" Margin="5,10,5,0"/>
+            <Label x:Name="lblMoved" Content="0 Moved Durchbruche" Margin="5,0,5,0"/>
+            <Label x:Name="lblResized" Content="0 Resized Durchbruche" Margin="5,0,5,0"/>
+            <Label x:Name="lblMovRes" Content="0 Moved and Resized" Margin="5,0,5,10"/>
+            <Label Content="Filter by:" Margin="5,0,5,0"/>
+            <ComboBox x:Name="ComboBoxFilter" Margin="15,0"/>
+            <TextBox x:Name="TextBoxFilter" Height="23" TextWrapping="Wrap" Text="" Margin="15,5,15,0"/>
+            <Button Content="Filter" Margin="15,5" Click="Btn_Click_Filter"/>
+            <Button Content="Multi - selection" Margin="15,20,15,5" Click="Btn_Click_MultipleSelection"/>
+            <Button Content="Refresh Context" Margin="15,5" Click="Btn_Click_RefreshContext"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

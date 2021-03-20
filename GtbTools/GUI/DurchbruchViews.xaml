@@ -1,0 +1,15 @@
+﻿<Window x:Class="GUI.DurchbruchViews"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Title="DurchbruchViews" Height="78" Width="426">
+    <Grid Background="#FFEAEAEA">
+        <ComboBox x:Name="MyComboBox" HorizontalAlignment="Left" ItemsSource="{Binding Views}" DisplayMemberPath="Name" Margin="10,10,0,0" VerticalAlignment="Top" Width="300"/>
+        <Button Content="Go!" HorizontalAlignment="Left" Margin="315,10,0,0" VerticalAlignment="Top" Width="93" Height="22" Click="Btn_Click_ShowView"/>
+    </Grid>
+</Window>

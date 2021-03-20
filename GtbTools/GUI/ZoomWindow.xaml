@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window
+	x:Class="GtbTools.ZoomWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	WindowStartupLocation="CenterScreen"
+    ResizeMode="NoResize"
+	Title="GTB Tools"
+	Height="450"
+	Width="480">
+    <Grid Background="#FFF0F0F0">
+        <ListBox
+			x:Name="ListBox"
+            BorderBrush="Black"
+			ItemsSource="{Binding OpenViewsTool.ModelViewList}"
+			Grid.Column="0"
+			Grid.Row="0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Margin="8,40,0,0"
+			Width="300"
+			Height="348">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox
+						Content="{Binding Name}"
+						IsChecked="{Binding IsSelected}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button
+			Content="Anwenden"
+			Name="button2"
+			Click="button2_Click"
+			Grid.Column="0"
+			Grid.Row="0"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Top"
+			Margin="0,11,13,0"
+			Width="138"
+			Height="23" />
+        <Label
+			Content="Ansichts Einstellungen:"
+			Grid.Column="0"
+			Grid.Row="0"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Bottom"
+			Margin="0,0,13,151"
+			Width="140"
+			Height="25" />
+        <CheckBox
+			x:Name="ChbxCloseInactive"
+			IsEnabled="True"
+			Content="Inaktive schließen"
+			IsChecked="true"
+			Grid.Column="0"
+			Grid.Row="0"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Bottom"
+			Margin="0,0,13,126"
+			Width="138"
+			Height="20" />
+        <CheckBox
+			Checked="primary_Checkbox_Checked"
+			Unchecked="primary_Checkbox_Unchecked"
+			IsEnabled="True"
+			x:Name="ChbxShowPrimaryViewsOnly"
+			IsChecked="false"
+			Content="Nur primäre"
+			Grid.Column="0"
+			Grid.Row="0"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Bottom"
+			Margin="0,0,13,105"
+			Width="138"
+			Height="20" />
+        <CheckBox
+			IsEnabled="False"
+			x:Name="ChbxShowFloorPlans"
+			IsChecked="true"
+			Content="Grundrisse"
+			Grid.Column="0"
+			Grid.Row="0"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Bottom"
+			Margin="0,0,13,73"
+			Width="138"
+			Height="20" />
+        <CheckBox
+			IsEnabled="False"
+			x:Name="ChbxShowCeilingPlans"
+			IsChecked="true"
+			Content="Deckenpläne"
+			Grid.Column="0"
+			Grid.Row="0"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Bottom"
+			Margin="0,0,13,52"
+			Width="138"
+			Height="20" />
+        <CheckBox
+			IsEnabled="False"
+			x:Name="ChbxShowStructuralPlans"
+			IsChecked="true"
+			Content="Tragswerkspläne"
+			Grid.Column="0"
+			Grid.Row="0"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Bottom"
+			Margin="0,0,13,31"
+			Width="138"
+			Height="20" />
+        <TextBox
+			x:Name="filterBox"
+			Grid.Column="0"
+			Grid.Row="0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Margin="8,11,0,0"
+			Width="120"
+			Height="20" />
+        <Button
+			Content="Filtern"
+			Grid.Column="0"
+			Grid.Row="0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Margin="137,11,0,0"
+			Width="75"
+			Height="20"
+			Name="button3"
+			Click="button3_Click" />
+    </Grid>
+</Window>

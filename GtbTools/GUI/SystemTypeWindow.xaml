@@ -1,0 +1,17 @@
+﻿<Window x:Class="GUI.SystemTypeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Title="SystemTypeWindow" Height="170" Width="300" Background="WhiteSmoke">
+    <Grid Margin="5" Background="White">
+        <Border CornerRadius="1" BorderThickness="1" BorderBrush="Gray"/>
+        <ComboBox x:Name="ComBoxMain" ItemsSource="{Binding SystemTypes}" DisplayMemberPath="Name" HorizontalAlignment="Center" Margin="0,34,0,0" VerticalAlignment="Top" Width="250"/>
+        <Label Content="Choose new system type:" HorizontalAlignment="Left" Margin="17,8,0,0" VerticalAlignment="Top"/>
+        <Button Content="Apply" Width="75" Margin="25" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="BtnApply"/>
+    </Grid>
+</Window>

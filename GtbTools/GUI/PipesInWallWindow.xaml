@@ -1,0 +1,42 @@
+﻿<Window x:Class="GUI.PipesInWallWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Title="PipesInWallWindow" Height="600" Width="900" Background="WhiteSmoke">
+    <Grid Margin="5" Background="White">
+        <Border CornerRadius="1" BorderThickness="1" BorderBrush="Gray"/>
+        <ComboBox x:Name="ComboBoxLinks" ItemsSource="{Binding PipesInWallViewModel.Links}" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="ComboBoxLinks_SelectionChanged"/>
+        <Label Content="Linked ARC Model:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Linked Model Wandfamilien:" HorizontalAlignment="Left" Margin="10,0,0,415" VerticalAlignment="Bottom"/>
+        <Label Content="Kontrollliste:" HorizontalAlignment="Right" Margin="0,0,535,415" VerticalAlignment="Bottom"/>
+        <Label x:Name="LblProcessing" Visibility="Hidden" Content="Processing Data..." HorizontalAlignment="Right" Margin="0,0,508,446" VerticalAlignment="Bottom"/>
+
+        <Button x:Name="BtnArcAnalyze" IsEnabled="False" Content="Architecture Model analysieren" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="200" Click="Btn_Click_ArcAnalyze"/>
+        <Button x:Name="BtnTgaAnalyze" IsEnabled="False" Content="TGA Model analysieren" HorizontalAlignment="Right" Margin="0,36,10,0" VerticalAlignment="Top" Width="600" Click="BtnTgaAnalyze_Click"/>
+        <Button x:Name="BtnApply" IsEnabled="False" Content="Status auf Pipes anwenden" HorizontalAlignment="Right" Margin="0,63,10,0" VerticalAlignment="Top" Width="600" Click="BtnApply_Click"/>
+
+        <ListBox x:Name="WallFamiliesBox" Background="WhiteSmoke" HorizontalAlignment="Left" Height="405" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="200">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox x:Name="CheckboxTemplate" Content="{Binding FamilyName}" IsChecked="{Binding IsSelected}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <DataGrid x:Name="DataGridControlList" SelectionChanged="DataGridControlList_SelectionChanged" HorizontalAlignment="Right" Height="405" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="600" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Header="Rohr ID" Binding="{Binding Path=ElementId}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Ref. Level" Binding="{Binding Path=RefLevel}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="System Typ" Binding="{Binding Path=SystemType}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Rohr Status" Binding="{Binding Path=Status}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Connector 1" Binding="{Binding Path=StatusConnector1}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Connector 2" Binding="{Binding Path=StatusConnector2}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Endresultat" Binding="{Binding Path=EndResult}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

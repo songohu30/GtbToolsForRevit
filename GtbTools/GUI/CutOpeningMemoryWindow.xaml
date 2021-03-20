@@ -1,0 +1,16 @@
+﻿<Window x:Class="GUI.CutOpeningMemoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="CutOpeningMemory" Height="300" Width="300">
+    <Grid>
+        <Button Content="Konfiguration lesen" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Width="150" Click="Button_Click"/>
+        <Button Content="Konfiguration speichern" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Width="150" Click="Button_Click_1"/>
+        <TextBox x:Name="TxtBoxId" HorizontalAlignment="Left" Height="23" Margin="71,155,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="150"/>
+        <Button Content="Show check UI" HorizontalAlignment="Left" Margin="71,195,0,0" VerticalAlignment="Top" Width="150" Click="Button_Click_2"/>
+
+    </Grid>
+</Window>

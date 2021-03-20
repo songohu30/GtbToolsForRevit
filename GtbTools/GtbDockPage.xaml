@@ -1,0 +1,122 @@
+﻿<Page x:Class="GtbTools.Forms.GtbDockPage"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:dat="clr-namespace:System.Windows.Data;assembly=PresentationFramework"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        Title="Dockable Dialogs" Height="400" Width="250"
+        x:Name="DockableDialogs"  Background="White" Loaded="DockableDialogs_Loaded">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Background="White">
+            <TabControl Background="White" Margin="0" SelectedIndex="4">
+                <TabItem Header="Ansicht Tools">
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="15"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button Content="Ansichten Öffnen" Margin="5,5,6,5" Grid.Row="1" Click="Button_Click_OpenViews"/>
+                        <Button Content="Koordinaten laden aus" Margin="5,5,6,5" Grid.Row="2" Click="Button_Click_LoadCoords"/>
+                        <Button Content="Koordinaten speichern unter" Margin="5,5,6,5" Grid.Row="3" Click="Button_Click_SaveCoords"/>
+                        <Button Content="Koordinaten kopieren in alle Ansichten" Margin="5,5,6,5" Grid.Row="4" Click="Button_Click_CopyCoords"/>
+                        <Button Content="Save all opened views" Margin="5,5,6,5" Grid.Row="5" Click="Btn_Click_SaveAllOpenedViews"/>
+                        <Button Content="Load saved views" Margin="5,5,6,5" Grid.Row="6" Click="Btn_Click_LoadAllSaved"/>
+                        <Button Content="External Links Control" Margin="5,5,6,5" Grid.Row="8" Click="BtnClick_ExternalLinkTool"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Daten Tools">
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button Content="Excel Cell Data Insert" Margin="5,5,6,5" Grid.Row="1" Click="Button_Click_ExcelDataImport"/>
+                        <Button Content="MEP System Extract" Margin="5,5,6,5" Grid.Row="2" Click="Button_Click"/>
+                        <Button Content="RaumBuch Export" Margin="5,5,6,5" Grid.Row="3" Click="Btn_Click_AokRaumbuch"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Durchbrüche">
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="SymbolMainWindow" Content="Symboleinstellungen für Ansichten" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="200" Click="SymbolMainWindow_Click"/>
+                        <Button x:Name="TagAllOpenings" Content="Durchbrüche beschriften" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="200" Click="Btn_Click_TagAllOpenings"/>
+                        <Button x:Name="CheckMemory" Content="Check Memory" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="200" Click="CheckMemory_Click" Visibility="Collapsed"/>
+                        <Button x:Name="ContextRefreshTest" Content="Durchbrüche Memory" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="200" Click="ContextRefreshTest_Click"/>
+                        <Button x:Name="RotationFixButton" Content="Durchbruch Rotation Fix" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="200" Click="RotationFixButton_Click"/>
+                        <Button x:Name="CopyElevations" Content="Copy Elevation to Op.Elevation" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Width="200" Click="CopyElevations_Click"/>
+                        <Button x:Name="CopyPasteParameters" Content="Copy Paste Parameters" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="200" Click="CopyPasteParameters_Click"/>
+                        <Button x:Name="FixDiameterBtn" Content="Diameter fix" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="200" Click="FixDiameterBtn_Click"/>
+                        <Button x:Name="PipesInWallBtn" Content="Rohre in Wänden analysieren" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Width="200" Click="PipesInWallBtn_Click"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="SAN Tools">
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button Content="Annotate vertical stacks" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" Width="200" Click="Btn_Click_AnnotateVerticalStacks"/>
+                        <Button Content="Add tag holder" HorizontalAlignment="Center" Margin="0" Grid.Row="2" VerticalAlignment="Center" Width="200" Click="Btn_Click_AddTagHolder" />
+                        <Button Content="Ventile fix tool" HorizontalAlignment="Center" Margin="0" Grid.Row="3" VerticalAlignment="Center" Width="200" Click="Btn_Click_VentileFix" />
+                        <Button Content="Rotate elements" HorizontalAlignment="Center" Margin="0" Grid.Row="4" VerticalAlignment="Center" Width="200" Click="Btn_Click_RotateElements" />
+                        <Button Content="Force connection" HorizontalAlignment="Center" Margin="0" Grid.Row="5" VerticalAlignment="Center" Width="200" Click="Btn_Click_ForceConnection" />
+                        <Button Content="Change System Type" HorizontalAlignment="Center" Margin="0" Grid.Row="6" VerticalAlignment="Center" Width="200" Click="BtnClick_ChangeSystemType" />
+                        <Button Content="Berechnungsunterstützung " HorizontalAlignment="Center" Margin="0" Grid.Row="7" VerticalAlignment="Center" Width="200" Click="BtnClick_CalculationSupport" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Info">
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="LblVersion" Content="GTB Tools version: " Grid.Row="1"/>
+                        <TextBox Foreground="Red" Text="Version Beta, bitte speichern Sie die Datei vor der Verwendung." TextWrapping="Wrap" Grid.Row="2" IsReadOnly="True"/>
+                        <TextBox Foreground="#FF7C7C7C" Text="Durchbrüche tools funktionieren nur mit neuen Durchbrüche Familien." TextWrapping="Wrap" Grid.Row="3" IsReadOnly="True"/>
+                        <Button Content="Test Datei" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="4" VerticalAlignment="Center" Width="75" Click="Btn_Click_GoToTestDir"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+        </StackPanel>
+        <Image Source="Resources/GTB_logo_new.png" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="1"></Image>
+    </Grid>
+
+</Page>

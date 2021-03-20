@@ -1,0 +1,103 @@
+﻿<Window x:Class="GUI.PipeFlowTagWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Title="PipeFlowTagWindow" Height="650" Width="850" Background="Gray">
+    <Grid Margin="5" Background="WhiteSmoke">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+
+            <ColumnDefinition Width="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="Btn_Analyze" Content="Ansicht analysieren" HorizontalAlignment="Center" Margin="0,31,0,0" VerticalAlignment="Top" Width="130" Click="Btn_Click_Analyze"/>
+        <Button x:Name="Btn_TagThem" Content="Elemente beschriften" HorizontalAlignment="Center" Margin="0,56,0,0" VerticalAlignment="Top" Width="130" Click="Btn_Click_TagThemAll" IsEnabled="False"/>
+        <Button Content="Strömungsrichtungen" HorizontalAlignment="Center" Margin="0,107,0,0" VerticalAlignment="Top" Width="130" Click="Btn_Click_DefaultDirections"/>
+        <Button Content="Tags austauschen" HorizontalAlignment="Center" Margin="0,81,0,0" VerticalAlignment="Top" Width="130" Click="Btn_Click_SelectedWithoutDN"/>
+
+        <ComboBox x:Name="ComBoxViaUp" HorizontalAlignment="Center" Margin="0,31,0,0" Grid.Column="1" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="ComBoxViaDown" HorizontalAlignment="Center" Margin="0,86,0,0" Grid.Column="1" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Durchgehend, abwärts" Grid.Column="1" HorizontalAlignment="Center" Margin="10,60,10,10" VerticalAlignment="Top"/>
+        <Label Content="Durchgehend, aufwärts" Grid.Column="1" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top"/>
+
+        <ComboBox x:Name="ComBoxNachOben" HorizontalAlignment="Center" Margin="0,31,0,0" Grid.Column="2" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="ComBoxNachUnten" HorizontalAlignment="Center" Margin="0,86,0,0" Grid.Column="2" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Nach Oben" Grid.Column="2" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top"/>
+        <Label Content="Nach Unten" Grid.Column="2" HorizontalAlignment="Center" Margin="10,60,10,10" VerticalAlignment="Top"/>
+
+        <ComboBox x:Name="ComBoxVonOben" HorizontalAlignment="Center" Margin="0,31,0,0" Grid.Column="3" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="ComBoxVonUnten" HorizontalAlignment="Center" Margin="0,86,0,0" Grid.Column="3" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Von Oben" Grid.Column="3" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top"/>
+        <Label Content="Von Unten" Grid.Column="3" HorizontalAlignment="Center" Margin="10,60,10,10" VerticalAlignment="Top"/>
+
+        <ComboBox x:Name="ComBoxDurchVent" HorizontalAlignment="Center" Margin="0,31,0,0" Grid.Column="4" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="ComBoxNachObenVent" HorizontalAlignment="Center" Margin="0,79,0,0" Grid.Column="4" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="ComBoxVonUntenVent" HorizontalAlignment="Center" Margin="0,127,0,0" Grid.Column="4" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Vent durchgehend" Grid.Column="4" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top"/>
+        <Label Content="Vent nach Oben" Grid.Column="4" HorizontalAlignment="Center" Margin="0,53,0,0" VerticalAlignment="Top"/>
+        <Label Content="Vent von Unten" Grid.Column="4" HorizontalAlignment="Center" Margin="0,101,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Manuelles Symbol:" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.789,0.5"/>
+        <RadioButton x:Name="RadBtnMit" Content="mit DN Tag" Grid.Column="1" HorizontalAlignment="Left" Margin="18,160,0,0" VerticalAlignment="Top" Checked="RadBtnMit_Checked"/>
+        <RadioButton x:Name="RadBtnOhne" Content="ohne DN Tag" Grid.Column="1" HorizontalAlignment="Left" Margin="18,180,0,0" VerticalAlignment="Top" Checked="RadBtnOhne_Checked"/>
+        <ComboBox x:Name="ComBoxManualTags" IsEnabled="False" HorizontalAlignment="Center" Margin="0,153,0,0" Grid.Column="2" VerticalAlignment="Top" Width="120" SelectionChanged="ComBoxManualTags_SelectionChanged"/>
+        <Button x:Name="BtnManualTags" Content="Tags einfügen" Grid.Column="2" IsEnabled="False" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" Width="120" Click="Btn_Click_AddManualSymbols"/>
+
+        <DataGrid x:Name="MyDataGrid" Grid.ColumnSpan="6" 
+                  ItemsSource="{Binding LineViewModels, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                  Margin="10,215,10,10" AutoGenerateColumns="False"
+                  SelectionChanged="MyDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Header="Ref. Rohr" Binding="{Binding Path=ReferencePipe}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Ist Tagged" Binding="{Binding Path=IsTagged}" FontWeight ="Bold"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Geht Oben" Binding="{Binding Path=GoesAbove}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Geht Unten" Binding="{Binding Path=GoesBelow}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Taghalter" Binding="{Binding Path=TagHolder}"/>
+                <DataGridTemplateColumn Header="Obenelemente">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox Width="50" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{Binding AboveElements}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Untenelemente">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox Width="50" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{Binding BelowElements}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Reduzierelemente">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox Width="50" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{Binding ReducingElements}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Durchelemente">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox Width="50" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{Binding ViaElements}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Endelemente">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox Width="50" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{Binding EndElements}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
